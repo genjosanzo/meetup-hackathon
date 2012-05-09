@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry exported="true" kind="con" path="MULE_RUNTIME"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/test/resources"/>
+	<classpathentry kind="lib" path="/Users/alberto/Downloads/MuleStudio-1.3/plugins/org.mule.tooling.ui.contribution.mongodb_2.1.0.201205050602/mule-module-mongo-2.1.jar"/>
+	<classpathentry kind="lib" path="/Users/alberto/Downloads/MuleStudio-1.3/plugins/org.mule.tooling.ui.contribution.twitter_2.5.0.201205050602/mule-module-twitter-2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/alberto/Downloads/MuleStudio-1.3/plugins/org.mule.tooling.ui.contribution.salesforce_4.2.0.201205050602/mule-module-sfdc-4.2.jar"/>
+	<classpathentry kind="lib" path="/Users/alberto/Downloads/MuleStudio-1.3/plugins/org.mule.tooling.ui.contribution.magento_1.5.0.201205050602/mule-module-magento-1.5.jar"/>
+	<classpathentry kind="lib" path="/Users/alberto/Downloads/MuleStudio-1.3/plugins/org.mule.tooling.ui.contribution.cmis_1.6.0.201205050602/mule-module-cmis-1.6.jar"/>
+	<classpathentry kind="lib" path="/Users/alberto/Downloads/MuleStudio-1.3/plugins/org.mule.tooling.ui.contribution.twilio_1.2.0.201205050602/mule-module-twilio-1.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="CE-3.2.1" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/4.0/mule-sfdc.xsd 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd ">
+    <sfdc:config name="SfdcConnector" username="${sf.username}" password="${sf.password}" securityToken="oyhH5Q0haPh4X6DgUutxwGTiQ" doc:name="Salesforce"/>
+    <flow name="DataPuller" doc:name="DataPuller">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="${http.port}" path="release" doc:name="HTTP"/>
+        <sfdc:get-user-info config-ref="SfdcConnector" doc:name="Salesforce"/>
+        <sfdc:get-session-id config-ref="SfdcConnector" doc:name="Salesforce"></sfdc:get-session-id>
+        <message-properties-transformer scope="outbound" doc:name="Set SFDC Session">
+            <add-message-property key="Cookie" value="#[string:sid=#[payload]]"/>
+        </message-properties-transformer>
+        <http:outbound-endpoint exchange-pattern="request-response" host="dev.ee.mulesource.com" port="80" path="downloads/releases/MULE-#[headers:INBOUND:http.request]/mmc-agent-mule2-impl-#[headers:INBOUND:http.request]-full.jar" doc:name="HTTP" method="GET" />
+        
+        <http:outbound-endpoint exchange-pattern="request-response" host="na6.salesforce.com" port="80" path="00O80000004MWF2?export=1" method="POST" doc:name="Post the content"/>
+        <default-exception-strategy stopMessageProcessing="true"/>
+    </flow>
+</mule>
